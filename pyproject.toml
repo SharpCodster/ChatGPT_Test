@@ -7,8 +7,9 @@ readme = "README.md"
 packages = [{include = "chatgpt_test"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 pydantic = "^1.10.5"
+requests = "^2.28.2"
 
 
 [build-system]

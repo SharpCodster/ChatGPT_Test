@@ -9,7 +9,7 @@ from ast import List
 
 import requests
 
-from common.southbound.forti_manager.models import (
+from .models.forti_models import (
     DeviceCounter,
     DeviceEvent,
     DeviceInfo,
