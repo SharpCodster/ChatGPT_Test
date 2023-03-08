@@ -2,7 +2,7 @@
 FortiManager Model Exports
 """
 
-from .forti-models import (
+from .forti_models import (
     CustomerDeviceInfo,
     DeviceCounter,
     DeviceEvent,
