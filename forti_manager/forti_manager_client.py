@@ -1,5 +1,9 @@
 import requests
 import json
+from typing import List
+
+from forti_manager.models.forti_models import Device
+
 
 class FortiManagerAPI:
     def __init__(self, host, username, password):
@@ -47,10 +51,13 @@ class FortiManagerAPI:
         self._send_request(method, params)
         self.session.close()
 
-    def get_device_list(self):
+    def get_device_list(self) -> List[Device]:
         method = "get"
         params = [{"url": "dvmdb/device"}]
 
         response = self._send_request(method, params)
-        return response['result'][0]['data']
+        device_data = response['result'][0]['data']
+        devices = [Device(**device) for device in device_data]
+
+        return devices
 
