@@ -1,13 +1,14 @@
 
-from forti_manager.forti_manager_client import SBFortiManager
+from forti_manager.forti_manager_client import FortiManagerAPI
 
 username = input("Please enter your username: ")
 password = input("Please enter your password: ")
 base_url = input("Please enter FortiManager Url: ")
 
 
-api = SBFortiManager(base_url, username, password)
-customers = api.get_customers()
 
-
+fmg_api = FortiManagerAPI(host=base_url, username=username, password=password)
+device_list = fmg_api.get_device_list()
+print(device_list)
+fmg_api.logout()
 
