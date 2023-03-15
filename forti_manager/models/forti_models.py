@@ -14,3 +14,13 @@ class Device(BaseModel):
     os_ver: str
 
 
+class PolicyPackage(BaseModel):
+    adom: Optional[str]
+    name: str
+    scope: str
+
+class ADOM(BaseModel):
+    name: str
+    desc: Optional[str]
+    flags: Optional[int]
+    os_ver: Optional[str]

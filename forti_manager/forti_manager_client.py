@@ -2,7 +2,7 @@ import requests
 import json
 from typing import List
 
-from forti_manager.models.forti_models import Device
+from forti_manager.models.forti_models import Device, PolicyPackage, ADOM
 
 
 class FortiManagerAPI:
@@ -60,4 +60,24 @@ class FortiManagerAPI:
         devices = [Device(**device) for device in device_data]
 
         return devices
+    
+    def get_policy_package_list(self) -> List[PolicyPackage]:
+        method = "get"
+        params = [{"url": "pm/pkg"}]
+
+        response = self._send_request(method, params)
+        package_data = response['result'][0]['data']
+        packages = [PolicyPackage(**package) for package in package_data]
+
+        return packages
+    
+    def get_adom_list(self) -> List[ADOM]:
+        method = "get"
+        params = [{"url": "dvmdb/adom"}]
+
+        response = self._send_request(method, params)
+        adom_data = response['result'][0]['data']
+        adoms = [ADOM(**adom) for adom in adom_data]
+
+        return adoms
 
